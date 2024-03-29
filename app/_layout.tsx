@@ -1,58 +1,45 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useRouter } from "expo-router";
+import { Slot, useSegments } from "expo-router";
+import { createContext, useContext, useEffect, useState } from "react";
 
-import { useColorScheme } from '@/components/useColorScheme';
-
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from 'expo-router';
-
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+type LoginContextValue = {
+  signedIn: boolean;
+  login: () => void;
 };
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+export const LOGIN_CONTEXT = createContext<LoginContextValue>({
+  signedIn: false,
+  login: () => {},
+});
 
-export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
-  });
+export const InitLayout = () => {
+  const segments = useSegments();
+  const router = useRouter();
+  const { signedIn } = useContext(LOGIN_CONTEXT);
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+  const inTabsGroup = segments[0] === "(authenticated)";
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
+    if (signedIn && !inTabsGroup) {
+      router.replace("/home");
+    } else if (!signedIn) {
+      router.replace("/login");
     }
-  }, [loaded]);
+  }, [segments]);
 
-  if (!loaded) {
-    return null;
-  }
+  return <Slot />;
+};
 
-  return <RootLayoutNav />;
-}
+export default function RootLayoutNav() {
+  const [signedIn, setSignIn] = useState(true);
 
-function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+  const login = () => {
+    setSignIn(true);
+  };
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <LOGIN_CONTEXT.Provider value={{ login, signedIn }}>
+      <InitLayout />
+    </LOGIN_CONTEXT.Provider>
   );
 }
