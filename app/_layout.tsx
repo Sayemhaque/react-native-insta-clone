@@ -1,4 +1,4 @@
-import { useRouter } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import { Slot, useSegments } from "expo-router";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -27,11 +27,11 @@ export const InitLayout = () => {
     }
   }, [segments]);
 
-  return <Slot />;
+  return <Stack screenOptions={{ headerShown: false }} />;
 };
 
 export default function RootLayoutNav() {
-  const [signedIn, setSignIn] = useState(true);
+  const [signedIn, setSignIn] = useState(false);
 
   const login = () => {
     setSignIn(true);

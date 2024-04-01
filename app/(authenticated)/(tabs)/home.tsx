@@ -25,7 +25,7 @@ const Home = () => {
               <Text style={styles.username}>akhi.ayman</Text>
             </View>
             <View>
-              <Entypo name="dots-three-vertical" size={24} color="black" />
+              <Entypo name="dots-three-vertical" size={24} color="white" />
             </View>
           </View>
           <Image
@@ -34,12 +34,12 @@ const Home = () => {
           />
           <View style={styles.iconsWrapper}>
             <View style={styles.icons}>
-              <AntDesign name="hearto" size={23} color="black" />
-              <EvilIcons name="comment" size={35} color="black" />
-              <FontAwesome5 name="paper-plane" size={22} color="black" />
-              <FontAwesome name="whatsapp" size={26} color="black" />
+              <AntDesign name="hearto" size={23} color="white" />
+              <EvilIcons name="comment" size={35} color="white" />
+              <FontAwesome5 name="paper-plane" size={22} color="white" />
+              <FontAwesome name="whatsapp" size={26} color="white" />
             </View>
-            <FontAwesome name="bookmark-o" size={24} color="black" />
+            <FontAwesome name="bookmark-o" size={24} color="white" />
           </View>
           <View style={styles.footer}>
             <Text style={styles.likes}>10,434 likes</Text>
@@ -78,10 +78,8 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "black",
     shadowColor: "#000",
-    marginTop: 10,
-    marginBottom: 20,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -111,6 +109,7 @@ const styles = StyleSheet.create({
   username: {
     fontSize: 16,
     fontWeight: "bold",
+    color: "white",
   },
   postImage: {
     width: "100%",
@@ -137,12 +136,14 @@ const styles = StyleSheet.create({
   },
   likes: {
     fontWeight: "bold",
+    color: "white",
   },
   description: {
     marginTop: 5,
+    color: "white",
   },
   hashtags: {
-    color: "blue",
+    color: "#262626",
     marginTop: 5,
   },
 });

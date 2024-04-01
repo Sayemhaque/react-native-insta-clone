@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <View
       style={{
-        backgroundColor: "white",
+        backgroundColor: "#833AB4",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
@@ -17,21 +17,21 @@ const Header = () => {
         paddingVertical: 10,
       }}
     >
-      <Entypo name="instagram" size={44} color="black" />
+      <Entypo name="instagram" size={44} color="white" />
       <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
         <Link href="/add-post" asChild>
           <TouchableOpacity>
-            <Feather name="plus-square" size={28} color="black" />
+            <Feather name="plus-square" size={28} color="white" />
           </TouchableOpacity>
         </Link>
         <Link href="/message" asChild>
           <TouchableOpacity>
-            <AntDesign name="hearto" size={28} color="black" />
+            <AntDesign name="hearto" size={28} color="white" />
           </TouchableOpacity>
         </Link>
         <Link href="/notification" asChild>
           <TouchableOpacity>
-            <Ionicons name="paper-plane-outline" size={28} color="black" />
+            <Ionicons name="paper-plane-outline" size={28} color="white" />
           </TouchableOpacity>
         </Link>
       </View>
