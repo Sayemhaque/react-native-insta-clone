@@ -34,12 +34,12 @@ const Home = () => {
           />
           <View style={styles.iconsWrapper}>
             <View style={styles.icons}>
-              <AntDesign name="hearto" size={23} color="white" />
-              <EvilIcons name="comment" size={35} color="white" />
-              <FontAwesome5 name="paper-plane" size={22} color="white" />
-              <FontAwesome name="whatsapp" size={26} color="white" />
+              <AntDesign name="hearto" size={23} color="black" />
+              <EvilIcons name="comment" size={35} color="black" />
+              <FontAwesome5 name="paper-plane" size={22} color="black" />
+              <FontAwesome name="whatsapp" size={26} color="black" />
             </View>
-            <FontAwesome name="bookmark-o" size={24} color="white" />
+            <FontAwesome name="bookmark-o" size={24} color="black" />
           </View>
           <View style={styles.footer}>
             <Text style={styles.likes}>10,434 likes</Text>
@@ -78,7 +78,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: "white",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   username: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "white",
+    color: "black",
   },
   postImage: {
     width: "100%",
@@ -136,11 +136,11 @@ const styles = StyleSheet.create({
   },
   likes: {
     fontWeight: "bold",
-    color: "white",
+    color: "black",
   },
   description: {
     marginTop: 5,
-    color: "white",
+    color: "black",
   },
   hashtags: {
     color: "#262626",
